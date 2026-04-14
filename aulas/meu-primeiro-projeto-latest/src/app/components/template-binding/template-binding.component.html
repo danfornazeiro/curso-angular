@@ -1,0 +1,43 @@
+  <h2>Template</h2>
+  <h3>Text Interpolation</h3>
+  {{ name }} <br />
+  {{ age }} <br />
+  {{ this.age > 10 ? 'Maior que 10' : 'Menor ou igual a 10'}} <br />
+
+  <hr />
+  <h2>Property binding</h2>
+
+  <button [disabled]="isDisabled">Botão</button>
+
+  <h2>Attribute binding</h2>
+  <p [attr.title]="name" [attr.aria-label]="name">{{ name }}</p>
+
+  <h2>Class and Style binding</h2>
+{{ name }}
+  <p [class.background-red]="age > 30" [class.background-blue]="age < 30">{{ name }}</p>
+
+  <p [style.text-decoration]="'underline'">Texto sublinhado</p>
+
+  <h2>Event binding</h2>
+
+  <button (click)="sum()">+</button>
+  <button (click)="sub()">-</button>
+  <input (keydown.shift.t)="onKeyDown($event)" />
+
+  <div style="background-color: red; width: 30px; height: 30px;" (mousemove)="onMouseMove($event)">
+    <p>Pass mouse over this text</p>
+  </div>
+
+  <h2>Two-way binding</h2>
+    <input [(ngModel)]="name" />
+<p>{{ name }}</p>
+
+<hr />
+
+<h3>Diretivas de atributos</h3>
+
+<div [ngClass]="{ 'background-red': age < 30, 'background-blue': age >= 30 }">Classes condicionais</div>
+
+<div [ngStyle]="{
+  color: age < 30 ? 'green' : 'red'
+}">Estilo dinâmico</div>

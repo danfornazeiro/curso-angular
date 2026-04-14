@@ -9,5 +9,5 @@ import { TesteComponent } from '../../teste/teste.component';
   styleUrl: './new-component.component.css'
 })
 export class NewComponentComponent {
-
+  public name: string = 'Nelson Fornazeiro, o bravo!';
 }
