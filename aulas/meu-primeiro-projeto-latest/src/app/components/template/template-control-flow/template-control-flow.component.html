@@ -1,0 +1,135 @@
+  <h2>Control Flow</h2>
+  <h3>IF</h3>
+
+  @if (isTrue) {
+    <p>1 é igual a 1</p>
+  } @else {
+    <p>1 é diferente de 1</p>
+  }
+
+  <!-- forma antiga - tem que importar o ngif -->
+   <ng-container *ngIf="isTrue; else isFalse">
+    <p>1 é igual a 1</p>
+  </ng-container>
+  <ng-template #isFalse>
+    <p>1 é diferente de 1</p>
+  </ng-template>
+<h3>FOR</h3>
+@if (loadingData$ | async; as data) {
+  <ul>
+    @for (item of data; track item) {
+      <li>{{ item }}</li>
+    }
+  </ul>
+} @else {
+  <p>Carregando...</p>
+}
+<ul>
+@for(item of loadingData$ | async; track item) {
+  <li>{{ item }}</li>
+}
+</ul>
+
+<!--forma antiga - tem que importar o ngFor -->
+<ng-container *ngIf="loadingData$ | async as data; else loading">
+  <ul>
+    <li *ngFor="let item of data; trackBy: trackByFn"></li>
+  </ul>
+</ng-container>
+<ng-template #loading>
+  <p>Carregando...</p>
+</ng-template>
+
+<h3>for e seus valores</h3>
+
+@for(
+  item of itens; track item.name;
+  let i = $index;
+  let c = $count;
+  let f = $first;
+  let l = $last;
+  let e = $even;
+  let o = $odd;
+){
+  <p>{{item.name}}</p>
+  <p>Index: {{ i }}</p>
+  <p>Count: {{ c }}</p>
+  <p>First: {{ f }}</p>
+  <p>Last: {{ l }}</p>
+  <p>Even: {{ e }}</p>
+  <p>Odd: {{ o }}</p>
+}
+
+<hr />
+<!--forma antiga-->
+<ng-container
+  *ngFor="
+    let item of itens;
+    let i = index;
+    let c = count;
+    let f = first;
+    let l = last;
+    let e = even;
+    let o = odd;
+    trackBy: trackByFn
+  ">
+  <p>{{ item.name }}</p>
+  <p>Index: {{ i }}</p>
+  <p>Count: {{ c }}</p>
+  <p>First: {{ f }}</p>
+  <p>Last: {{ l }}</p>
+  <p>Even: {{ e }}</p>
+  <p>Odd: {{ o }}</p>
+</ng-container>
+
+<input #name type="text">
+<button (click)="addNewName(name.value)">Add Name</button>
+
+<hr />
+
+<h3>"FOR - EMPTY"</h3>
+@for(item of itensNew; track item.name) {
+  <p>{{ item.name }}</p>
+} @empty {
+  <p>Não há itens</p>
+}
+
+<!--forma antiga-->
+<ul>
+  <ng-container *ngIf="itensNew.length === 0; else emptyList">
+    <li>Não contem valores</li>
+  </ng-container>
+  <ng-template #emptyList>
+    <ng-container *ngFor="let item of itensNew;">
+      <li>{{ item.name }}</li>
+    </ng-container>
+  </ng-template>
+</ul>
+
+<h3>Switch</h3>
+@switch (switchValue) {
+  @case ('A') {
+    <p>Valor A</p>
+  }
+  @case ('B') {
+    <p>Valor B</p>
+  }
+  @default {
+    <p>Valor Default</p>
+  }
+}
+
+<!--forma antiga-->
+
+<ng-container [ngSwitch]="switchValue">
+  <ng-container *ngSwitchCase="'A'">
+    <p>Valor = A</p>
+  </ng-container>
+  <ng-container *ngSwitchCase="'B'">
+    <p>Valor = B</p>
+  </ng-container>
+    <ng-container *ngSwitchDefault>
+    <p>Valor Default</p>
+  </ng-container>
+</ng-container>
+
