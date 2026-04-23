@@ -1,0 +1,47 @@
+<!--<h2 style="margin-bottom: 5000px;">Deferrable Views</h2>
+@defer - adia o carregamento de um componente até a primeira ação do usuário-->
+<!--
+  on - especifica uma condição de acionador  usando um acionador da lista,
+  (idle, timer, viewport, interaction, homer, immediate, prefetch)
+
+  when - especifica uma condição imperativa como uma expressão que retorna
+  um booleano. Quando esta expressão se torna verdadeira, o espaço reservado
+  é trocado pelo conteúdo carregado lentamente (o que pode ser uma operação
+  assincrona se as dependencias precisarem ser buscadas).
+
+  <button (click)="isTrue = true">Add True</button>
+@defer (when isTrue) {
+
+  Nota: vários on triggers são sempre condições OR. Da mesma fora, on misturado
+  com when também são condições OR.
+  @defer(on timer(5s); on interaction(trigger); on hover) ocorre quando um dos eventos
+  ocorrer primeiro. (um OU outro)
+-->
+<!--@defer (on idle) já é o default dele se vc não colocar nada -->
+<!--@defer (on timer(5s)) aguarda p tempo estipulado para carregar o componente enquanto exibe a mensagem dada -->
+<!--@defer (on viewport) só carrega quando a renderização da tela chegar no valor especificado em
+style="margin-bottom: 5000px;"-->
+<!--@defer (on interaction(trigger)) só ocorre qundo houver uma ação do usuario que sofre a interação, no caso o h2 através do #trigger
+<h2 #trigger>Deferrable Views</h2>
+@defer (on hover) ocorre quando passa o mpose sobre
+@defer (on immediate) ocorre quando termina a renderização da página
+@defer (on prefetch) pode carregar direto. Porém se houver outra diretiva, pode carregar logo após a primeira ação
+ex: @defer (on interaction; prefetch on idle), ou seja, ele carrega, mas só mostra após a interação
+
+palcehoder minimun -> <h2 #trigger>Deferrable Views</h2>
+@defer (on interaction) {
+  <app-new-component />
+} @placeholder(minimum 2s) { -> deve aguardar no mínimo 2s para sofrer a ação
+-->
+
+<h2 #trigger>Deferrable Views</h2>
+@defer {
+  <app-new-component />
+} @placeholder(minimum 5s) {
+  <p>Mostrar antes de carregar algo</p>
+} @loading() {
+ <p>Loading...</p>
+}@error {
+  <p>Ocorreu um erro ao carregar o componente :(</p>
+}
+

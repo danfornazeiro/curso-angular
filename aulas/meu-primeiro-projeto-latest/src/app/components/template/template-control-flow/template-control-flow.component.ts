@@ -1,10 +1,10 @@
-import { AsyncPipe, NgFor, NgIf, NgSwitch } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { Component } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-template-control-flow',
-  imports: [AsyncPipe, NgFor, NgIf, NgSwitch],
+  imports: [AsyncPipe, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault],
   templateUrl: './template-control-flow.component.html',
   styleUrl: './template-control-flow.component.css'
 })
