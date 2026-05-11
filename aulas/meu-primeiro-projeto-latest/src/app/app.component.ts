@@ -6,6 +6,8 @@ import { TemplateVariablesComponent } from './components/template-variables/temp
 import { TemplateControlFlowComponent } from './components/template/template-control-flow/template-control-flow.component';
 import { TemplateDeferableViewsComponent } from './components/template/template-deferable-views/template-deferable-views.component';
 import { SignalsComponent } from './components/signals/signals/signals.component';
+import { PaiOuMaeComponent } from './comunicacao-entre-componetes/pai-ou-mae/pai-ou-mae.component';
+import { AngularPipesComponent } from './components/pipe/angular-pipes/angular-pipes.component';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,9 @@ import { SignalsComponent } from './components/signals/signals/signals.component
     TemplateVariablesComponent,
     TemplateControlFlowComponent,
     TemplateDeferableViewsComponent,
-    SignalsComponent
+    SignalsComponent,
+    PaiOuMaeComponent,
+    AngularPipesComponent
   ],
   template: `
   <!--<h1>Meu Primeiro Projeto Angular</h1>
@@ -28,7 +32,9 @@ import { SignalsComponent } from './components/signals/signals/signals.component
 
   <!--<app-template-control-flow /> -->
   <!--<app-template-deferable-views />-->
-  <app-signals />
+  <!--<app-signals />-->
+  <!--<app-pai-ou-mae />-->
+  <app-angular-pipes />
   `
 })
 export class AppComponent {

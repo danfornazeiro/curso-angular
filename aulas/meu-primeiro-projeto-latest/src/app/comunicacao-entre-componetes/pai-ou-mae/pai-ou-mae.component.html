@@ -1,0 +1,6 @@
+<p>pai-ou-mae component</p>
+<!--<app-input inputName="Nelson Fornazeiro"/>-->
+<app-input [inputName]="name()"/>
+<app-output (outputName)="outputName.set($event)" />
+
+<p>{{ outputName() }}</p>
