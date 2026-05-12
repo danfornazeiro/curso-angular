@@ -4,11 +4,12 @@
 
 html, body {
   height: 100%;
+  overflow-y: hidden;
 }
 
 body {
+  background: var(--black);
   font-family: Roboto, 'Helvetica neue', sans-serif;
-  background: var(----black);
 }
 
 h1 {

@@ -1,0 +1,26 @@
+<header [ngClass]="{'has-items': inputListItems.length
+}">
+  @if(inputListItems.length > 0){
+    <h1>Minha Lista de Tarefas</h1>
+  }
+  <div style="width: 370px;">
+    <span class="input-label-text" for="inputValue">
+      <input
+        type="text"
+        placeholder="Adicione um novo item"
+        id="inputValue"
+        autofocus
+        (keyup.enter)="focusAndAddItem(inputText.value)"
+        #inputText
+      />
+      <button
+        class="btn btn-primary-circle"
+        title="Adicionar um novo item"
+        (click)="focusAndAddItem(inputText.value)"
+      ></button>
+  </span>
+  </div>
+</header>
+
+
+
